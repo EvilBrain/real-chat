@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Socket.io simple chat</title>
-    <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-    <div class="container">
-    <div class="inbox">
-        <div class="inbox__people">
-            <h4>Active users</h4>
-        </div>
-        <div class="inbox__messages">
-            <div class="messages__history"></div>
-            <div class="fallback"></div>
-        </div>
-    </div>
-
-    <form class="message_form">
-        <input type="text" class="message_form__input" placeholder="Type a message" />
-        <button class="message_form__button" type="submit">
-        Enter
-        </button>
-    </form>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-    <script src="main.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://use.fontawesome.com/releases/v5.14.0/js/all.js" data-auto-replace-svg="nest"></script>
+        <title>SECRET CHAT</title>
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <main>
+            <div class="container">
+                <h1>Chat Secret by EvilBrain</h1>
+                <div class="inbox">
+                    <div class="inbox__people">
+                        <h4>Utilisateurs actifs</h4>
+                    </div>
+                    <div class="inbox__messages">
+                        <!--<h4>Chat</h4>-->
+                        <div class="messages__container">
+                            <div class="messages__history">
+                            </div>
+                            <div class="fallback"></div>
+                        </div>
+                    </div>
+                </div>
+                <form class="message_form">
+                    <span id="charcount">0/2000</span>
+                    <input type="text" class="message_form__input" placeholder="Type a message" onkeyup="charcountupdate(this.value)" maxlength="2000"/>
+                    <button class="message_form__button" type="submit"><i class="fas fa-chevron-circle-up"></i></button>
+                </form>
+            </div>
+        </main>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+        <script src="main.js"></script>
+    </body>
 </html>
