@@ -8,6 +8,15 @@ const fallback = document.querySelector(".fallback");
 
 let userName = "";
 
+function antixss(msg){
+    return String(msg)
+    .replace(/&/g, '%amp;')
+    .replace(/"/g,'%quot;')
+    .replace(/'/g,"%#39")
+    .replace(/>/g,"&gt;")
+    .replace(/</g,"&lt;");
+}
+
 function charcountupdate(str) {
     var lng = str.length;
 	document.getElementById("charcount").innerHTML = lng + '/2000';
@@ -36,11 +45,11 @@ const addToUsersBox = (userName) => {
 const addNewMessage = ({ user, message }) => {
     const time = new Date();
     const formattedTime = time.toLocaleString("fr-FR", { hour: "numeric", minute: "numeric" });
-
+    var msgnoxss = antixss(message);
     const receivedMsg = `
     <div class="incoming__message">
         <div class="received__message">
-        <p>${message}</p>
+        <p>${msgnoxss}</p>
         <div class="message__info">
             <span class="time_date">${formattedTime} •</span>
             <span class="message__author"><b>${user}</b></span>
@@ -51,7 +60,7 @@ const addNewMessage = ({ user, message }) => {
     const myMsg = `
     <div class="outgoing__message">
         <div class="sent__message">
-        <p>${message}</p>
+        <p>${msgnoxss}</p>
         <div class="message__info">
             <span class="time_date">${formattedTime}</span>
         </div>
@@ -62,6 +71,9 @@ const addNewMessage = ({ user, message }) => {
     ? myMsg
     : receivedMsg;
     document.querySelector(".inbox__messages").scrollTop = document.querySelector(".inbox__messages").scrollHeight;
+    if(user !== userName) {
+        document.getElementById('notif_sound').play();
+    }
 };
 
 messageForm.addEventListener("submit", (e) => {
@@ -112,4 +124,3 @@ socket.on("typing", function (data) {
 
     fallback.innerHTML = `<p>${nick} est entrain d'écrire...</p>`;
 });
-

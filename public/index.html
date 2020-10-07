@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="https://use.fontawesome.com/releases/v5.14.0/js/all.js" data-auto-replace-svg="nest"></script>
-        <title>SECRET CHAT</title>
+        <title>Messenger Du Bled</title>
         <link rel="stylesheet" href="./style.css" />
     </head>
     <body>
@@ -30,6 +30,11 @@
                     <button class="message_form__button" type="submit"><i class="fas fa-chevron-circle-up"></i></button>
                 </form>
             </div>
+            <audio id='notif_sound'>
+                <source src='sound/alarm.mp3' type='audio/mpeg' />
+                <source src='sound/alarm.ogg' type='audio/ogg' />
+                <source src='sound/alarm.wav' type='audio/wav' />
+            </audio>
         </main>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
         <script src="main.js"></script>
