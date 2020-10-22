@@ -11,8 +11,8 @@ let userName = "";
 function antixss(msg){
     return String(msg)
     .replace(/&/g, '%amp;')
-    .replace(/"/g,'%quot;')
-    .replace(/'/g,"%#39")
+    .replace(/"/g,'"')
+    .replace(/'/g,"'")
     .replace(/>/g,"&gt;")
     .replace(/</g,"&lt;");
 }
