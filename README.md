@@ -13,4 +13,4 @@ npm install
 ```cmd
 node server.js
 ```
-Go to <a
+Go to http://localhost:5000.
